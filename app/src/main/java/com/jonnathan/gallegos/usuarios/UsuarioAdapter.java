@@ -38,9 +38,7 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UserAdap
 
     @Override
     public void onBindViewHolder(@NonNull UserAdapterVH holder, int position) {
-
         ModeloUsuario userResponse = userResponseList.get(position);
-
         String username = userResponse.getAuthor();
         String prefix;
         switch (userResponse.getAuthor()){
@@ -63,7 +61,6 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UserAdap
                 prefix = "N";
             break;
         }
-
         holder.prefix.setText(prefix);
         holder.username.setText(username);
         holder.imageMore.setOnClickListener(new View.OnClickListener() {

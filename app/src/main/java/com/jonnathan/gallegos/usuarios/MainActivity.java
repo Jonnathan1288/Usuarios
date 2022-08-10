@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements UsuarioAdapter.Cl
 
     Toolbar toolbar;
     RecyclerView recyclerView;
-
     UsuarioAdapter usersAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +30,16 @@ public class MainActivity extends AppCompatActivity implements UsuarioAdapter.Cl
 
         toolbar = findViewById(R.id.toolbar);
         recyclerView = findViewById(R.id.recyclerview);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         usersAdapter = new UsuarioAdapter(this::ClickedUser);
         getAllUsers();
     }
     public void getAllUsers(){
-
         Call<List<ModeloUsuario>> userlist = ApiUsuario.getUserService().getAllUsers();
-
         userlist.enqueue(new Callback<List<ModeloUsuario>>() {
             @Override
             public void onResponse(Call<List<ModeloUsuario>> call, Response<List<ModeloUsuario>> response) {
-
                 if(response.isSuccessful()){
                     List<ModeloUsuario> userResponses = response.body();
                     usersAdapter.setData(userResponses);
